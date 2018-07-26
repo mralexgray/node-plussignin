@@ -1,0 +1,215 @@
+include partials/util.pug
+
+doctype html
+head
+	block head
+		+vport
+		//- meta(charset='utf-8')
+		block title
+		//- meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1')
+		block styles
+			+font('Ubuntu:300,400,500,700')
+			+fa
+			+sheet('https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.css')
+			style
+				:stylus
+					@import './partials/node_modules/nib'
+					@import './partials/styles'
+					weightify()
+					/*
+					mini = 3em
+					*, *::before, *::after
+						box-sizing border-box
+					body
+						font-family Ubuntu, sans-serif
+						font-size 1em
+						//- color #333
+						
+						//- h1
+						//- 	font-size 1.4em
+						//- em
+						//- 	font-style normal
+					a
+						text-decoration none
+						color white
+						//- color inherit
+					.layout
+						flex-max()
+					.content
+						display flex
+						//- apply(center, justify-content align-items)
+						flex 1
+						color hsb(0, 0%, 70%)
+					.trigger
+						z-index 2
+						fixed top 0 left 0
+						size 100% mini
+						background #192b3c
+						& > i
+							display inline-block
+							margin (mini/2) 0 0 (mini/2)
+					.nav
+						fixed top 0 left -15em
+						overflow hidden
+						transition all .3s ease-in
+						size 15em 100%
+						background #243e56
+						color rgba(255, 255, 255, 0.7)
+						ul
+							absolute top mini left 0
+							margin 0
+							padding 0
+							width 15em
+							li
+								width 100%
+					.nav:hover
+					.nav:focus
+					.trigger:focus + .nav
+					.trigger:hover + .nav
+						left 0
+					.s-sidebar__nav-link
+						position relative
+						display inline-block
+						size 100% mini
+						span
+							absolute top 50% left mini
+							transform translateY(-50%)
+						&:hover
+							background #4d6276
+						& > i
+							absolute top 0 left 0
+							display inline-block
+							size mini
+							&::before
+								absolute top 50% left 50%
+								transform translate(-50%, -50%)
+					@media (min-width: 42em)
+						.content
+							margin-left mini
+						.trigger
+							width mini
+						.nav
+							width mini
+							left 0
+						.nav:hover
+						.nav:focus
+						.trigger:hover + .nav
+						.trigger:focus + .nav
+							width 15em
+					@media (min-width: 68em)
+						.content
+							margin-left 15em
+						.trigger
+							display none
+						.nav
+							width 15em
+							ul
+								top 1.3em
+					*/
+					*
+						box-sizing border-box
+
+					header
+						padding 1em
+
+					.navbar
+						background #e2e2e2
+						.toggle
+						.brand
+							display inline-block
+
+					.link
+						display block
+						width 100%
+						text-align center
+						padding 1em
+						text-decoration none
+						background seagreen
+						color white
+						& hover
+						&:active
+							background black
+						.brand
+							width 10em
+							text-align center
+							padding 1em
+							background black
+							color white
+						@media (min-width: 48em)
+							.navbar
+								display flex
+								@media (min-width: 48em)
+									.left,.right
+										display flex
+										flex 1
+						.navbar
+							div
+								display none
+								display flex
+						/*@media (max-width: 48em)
+							.navbar
+								&.active
+
+									.toggle
+							background seagreen
+									color white
+							*/
+					.toggle
+						padding 1em
+						color black
+						vertical-align middle
+
+					@media (min-width: 48em)
+						.link
+							width auto
+						.right
+							justify-content flex-end
+						.toggle
+							display none
+
+					@media (max-width: 48em)
+						div
+							display block
+
+
+	block body
+		body
+			nav.navbar
+				a.toggle(href='#')
+					i.fa.fa-reorder
+				a.brand(href='#') Brand
+				.left
+					a.link(href='#') Link 1
+					a.link(href='#') Link 2
+				.right
+					a.link(href='#') Right Link 2
+			//-.container
+				// Sidebar
+				.sidebar
+					a.trigger(href='#0')
+						i.fa.fa-bars
+					nav.nav
+						ul
+							- var sections = { home: 'Home', user: "My Profile", camera: "Camera"}
+							each val,index in sections
+								li
+									a(href='#')
+										//- a.s-sidebar__nav-link(href='#')
+										button.bttn-bordered.bttn-sm
+											i.fa(class='fa-' + index)
+											span.bold= val
+							//- li
+								a.s-sidebar__nav-link(href='#0')
+									i.fa.fa-home
+									span.bold Home
+							//- li
+								a.s-sidebar__nav-link(href='#')
+									i.fa.fa-user
+									span.bold My Profile
+							//- li
+								a.s-sidebar__nav-link(href='#')
+									i.fa.fa-camera
+									span.bold Camera
+				// Content
+				main.content
+					h1.light Mollit voluptate non irure elit minim ex consectetur anim enim magna sit amet nisi. Adipisicing sint elit sint incididunt dolor irure velit incididunt occaecat non quis aliquip. Tempor irure amet cupidatat esse et proident ipsum consequat ut ullamco exercitation exercitation fugiat tempor. Anim deserunt Lorem nostrud nisi laboris do eu. Occaecat sit eiusmod in officia amet fugiat elit minim ex cillum consequat sint.

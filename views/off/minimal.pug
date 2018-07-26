@@ -1,0 +1,48 @@
+extends ./partials/template.pug
+
+append styles
+  style
+    :stylus
+      @import './partials/node_modules/nib'
+      @import './partials/styles'
+      @import url('https://cdnjs.cloudflare.com/ajax/libs/gridlex/2.7.1/gridlex.css')
+      *, *::before, *::after
+        box-sizing border-box
+      body
+        background-color yellow
+        size 100% 100vh
+        padding 0
+        margin 0
+      /*flex(dir)
+        display flex
+        flex-direction dir
+      .col
+        flex(column)
+        outline 5px solid blue
+      .row
+        flex(row)
+        outline 5px solid green
+        
+      */
+      .header
+        //- align-items center
+        background red
+        //- fixed top left SS
+        size 100% 50px
+        //- flex 0 0 1
+        //- justify-content flex-start
+      .right
+        align-self flex-end
+      .logo
+        
+        //- max-width 100%
+        max-height 50px
+        //- fixed top left
+        //- size 100% 100%
+        //- z-index 2
+      */
+append body
+  .grid-noBottom-middle
+    //- .header
+    .col.fa.fa-bars
+    img.col.logo(src='/img/113w15.logo.new.inverse.png')

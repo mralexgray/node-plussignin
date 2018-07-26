@@ -1,9 +1,30 @@
 {
   "name": "plussignin",
+  "license": "ISC",
+  "repository": {},
   "version": "0.0.1",
+  "main": "./module.js",
   "dependencies": {
+    "brfs": "^2.0.0",
+    "browserify-middleware": "^8.1.1",
+    "coffeeify": "^3.0.1",
+    "coffeescript": "^2.3.1",
+    "connect-assets": "^5.4.0",
+    "connect-favicons": "^0.1.5",
+    "cssify": "^1.0.3",
     "express": "*",
-    "jade": "*",
-    "googleapis": "0.2.3-alpha"
+    "express-expose": "^0.3.4",
+    "express-reload": "^1.1.0",
+    "express-session": "^1.15.6",
+    "googleapis": "0.2.3-alpha",
+    "ion-sound": "^3.0.7",
+    "jquery": "^3.3.1",
+    "jquery-matchmedia": "*",
+    "lodash": "^4.17.10",
+    "mobile-detect": "^1.4.2",
+    "pug-bootstrap": "0.0.15"
+  },
+  "scripts": {
+    "gencerts": "sudo certbot certonly --webroot -w '/Volumes/GoogleDrive/My Drive/_113w15/_Official Site' -d www.113w15.com -d 113w15.com"
   }
 }

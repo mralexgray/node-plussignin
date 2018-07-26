@@ -1,0 +1,22 @@
+body { background-image: url(/public/img/bg.png); padding: 0px; margin: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px; color: #666;}
+a { color: #666; text-decoration: none; }
+.container { height: 100%; width:100%; display: table; text-align: center }
+.mcell { display:table-cell; vertical-align:middle; margin: 0px auto; }
+.signin {
+  font-size: 24px;
+  color: #fff;
+  padding: 8px 15px;
+  background-color: #d64e33;
+  border-radius: 3px;
+  -webkit-transition: background ease 0.4s;
+  -moz-transition: background ease 0.4s;
+  box-shadow: 0px 0px 5px #aaa;
+}
+.signin:hover {
+  background-color: #b5402b;
+}
+.profile img {
+  vertical-align: -14px;
+  border: solid 5px #fff;
+  box-shadow: 0px 0px 5px #aaa;
+}

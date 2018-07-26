@@ -1,0 +1,97 @@
+extends ../node_modules/pug-bootstrap/_bootstrap
+//- extends ../node_modules/pug-bootstrap/layouts/cover
+//- extends ../node_modules/pug-bootstrap/_bootstrap
+include ./partials/util.pug
+include ./partials/carousel.pug
+
+append styles
+	//-	!-- Custom styles for this template --
+	+sheets('/assets/css/holo.css')
+		//- ["../css/cover.css",
+	
+
+	+carouselStyle()
+	style.
+		#logo {
+			height: 30px;
+			max-height: 30px;
+		}
+
+block body
+	.site-wrapper
+		.site-wrapper-inner
+			.cover-container
+				.masthead.clearfix
+					.inner
+						//- h3.masthead-brand
+						.masthead-brand
+							img#logo(src='/img/113w15.logo.new.inverse.png')
+							//- +img-responsive-center()
+						nav
+							ul.nav.masthead-nav
+								each menu,i in info.menus
+									li(class = !i ? 'active': false)
+										each desc,name in menu
+											a(href="#")= name
+								//- li.active 
+								//- 	a(href="#") Home
+								//- li
+								//- 	a(href="#") Features
+								//- li
+								//- 	a(href="#") Contact
+				.inner.cover
+
+					//- h1.cover-heading Cover your page.
+					p.lead= locals.info.description
+					//- Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
+					p.lead
+						if plus.profile
+							div.profile.mcell
+								a(href=plus.profile.url)
+									img(src=plus.profile.image.url)
+							for x,i in plus.profile
+								div #{i}#{x} 
+							span.mcell
+								a.signin(href="/logout") Logout
+						else
+							//- span.mcell
+								//- a.btn.btn-lg.btn-default.signin(href="/login") 
+							a(href='/login')
+								+btn-primary('Sign In with Google')
+
+					//- a(href="#", class="btn btn-lg btn-default") Learn more
+
+//-				.mastfoot
+					.inner
+						p Cover template for <a href="http://getbootstrap.com">Bootstrap </a>, by <a href="https://twitter.com/mdo">@mdo</a>.
+
+
+
+append scripts
+	//- include ./partials/carousel.pug
+	//- - console.log('found ' + glamour)
+	+carouselScript(glamour)
+	script
+		:coffee-script
+			$ ->
+				# console.log 'ready',  $
+				carousel(data);
+
+//- append body
+
+//- html
+//-   head
+//-     title Welcome to the sample app!
+//- link(rel="stylesheet", type="text/css", href="public/main.css")
+//-   body.container
+		if plus.profile
+			div.profile.mcell
+				a(href=plus.profile.url)
+					img(src=plus.profile.image.url)
+			for x,i in plus.profile
+				div #{i}#{x} 
+			span.mcell
+				a.signin(href="/logout") Logout
+		else
+			span.mcell
+				a.signin(href="/login") Sign In with Google+

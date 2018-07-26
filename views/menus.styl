@@ -1,0 +1,88 @@
+@import './partials/styles.styl'
+
+
+menubar = min( min(10vmin,10vw), 10vh )
+
+
+// @media screen and (orientation:portrait)
+// @media screen and (orientation:landscape)
+//   menubar = 4vw
+
+.fa
+  font-size .5 * menubar
+  apply menubar, min-width line-height
+  text-align center
+menuwidth = min(4 * menubar,50vw)
+#menu
+  fixed top menubar left 0
+  width menuwidth
+  &.open
+    li
+      .desc
+        opacity 1
+   
+  li
+    //- dashed(border-bottom)
+    display none
+    size 100% menubar
+    // overflow hidden
+    & > *
+      border-top .05 * menubar solid white
+    /.tapped
+      @extend .red
+    &:hover // :not(.disabled) 
+
+      .desc
+        // opacity 1
+        right 0
+      //- right 0
+      //- &, .desc
+      //- width 100%
+      //- left menubar
+      //- .desc
+      //- @extend .red		
+      //- width 400px
+    .fa
+      @extends .black
+      z-index 40
+      size menubar
+      //- display inline
+      //- relative top left						
+    .desc
+      opacity 0
+      transition right  .5s
+      @extend .green
+      position absolute
+      right menuwidth - menubar
+      z-index -10
+      size (menuwidth - menubar) menubar
+      float right
+      text-align right
+      padding-right 1em
+      line-height menubar
+      font-size .5 * menubar	
+      //- position relative	
+      //- transition right .3s
+      //- width 100px
+      //- overflow hidden
+      //- relative top 0 right menubar
+      //- menuwidth - menubar
+      //- right menubar
+      //- width 0%
+      //- float right
+      //- flex 1 1 auto
+      //- display block
+      //- max-width 20vw
+    //- z-index -100
+    //- display inline-flex
+    //- justify-content space-between
+    //- width 100%
+    //- margin-right menuwidth - menubar
+    //- relative top left
+    //- padding-right 1em
+    //- .fa
+    //- background black
+    //- absolute top 0 left 0
+    //- &.disabled > *
+  //- &.open
+  //- 	display block

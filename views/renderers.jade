@@ -1,0 +1,70 @@
+//- mixin checklogin
+
+- var about = info()
+case render
+	when 'camera'
+		div #{render}
+		h4=about.menus[render].desc
+		style
+			:stylus
+				@import './partials/menus.styl'
+				canvas
+					position fixed 
+					top menubar
+					left 0
+					width 100%
+					max-height 100vh - menubar
+				 	//- height 100vmin
+					//- &.paused
+						//- .curtain
+
+		//- .jsmpeg" data-url="ws://localhost:8082"></div> -->
+		canvas#video-canvas.orange
+		script(src='/jsmpeg.min.js')
+		script
+			:coffee-script
+				canvas = document.getElementById 'video-canvas'
+				host = document.location.hostname || 'localhost'
+				url = "ws://#{host}:8082/"
+				sizes = [512 * 1024, 1024 * 1024]
+				do2x = (x) -> x() 
+				onUnlocked = ->
+					console.log('unlock video audio: ' + url)
+					window.player.volume = 1
+				makePlayer = ->
+					window.paused = false
+					window.player = new JSMpeg.Player(url, canvas: canvas)
+					window.player.audioOut.unlock(onUnlocked)
+				$ ->
+					#window.player = null
+					$('canvas').on 'click', ->
+						if window.player and not window.paused
+							console.log "it's plating"
+							window.player.destroy()
+							window.paused = true
+						#		//- now = window.player.isPlaying
+						#	console.log now and 'pausing' or 'playing'
+						#		now and window or makePlayer() # do2x(window.player.play)
+						else
+							console.log 'making init player'
+							makePlayer()
+					window.pagePurge = ->
+						window.player.destroy()
+							
+							#  // , videoBufferSize: sizes[1] });
+
+				# var player = new JSMpeg.Player(url)
+				###
+					document.removeEventListener('touchstart', onTouchStart)
+				onTouchStart = =>
+					console.log 'onTouchStart'
+					player.audioOut.unlock(onUnlocked)
+					document.removeEventListener('touchstart', onTouchStart)
+
+				# try to touchstart
+				# touchstart to unlock by touchstart event
+				document.addEventListener('touchstart', onTouchStart, false)
+				###
+	default
+		div #{render}
+		h4=about.menus[render].desc

@@ -1,0 +1,79 @@
+extends ./partials/template
+append title
+	title=about.address
+append styles            
+	style
+		:stylus
+			@import './menus.styl'	
+			#signin
+
+				:after
+					content ''
+					@extend .antbar
+					size 100% 5px
+				*
+					padding 1em
+					align-self center
+				:last-child
+					flex-grow 1
+				height menubar	
+				padding-right 1em
+				max-width 80vw
+				fixed bottom menubar right 0
+				overflow hidden
+			#container
+				flex-wrap wrap
+				height 100vh
+				& > *
+					width 100%
+				:nth-child(1)
+					align-self flex-start
+				:nth-child(2)
+					align-self flex-end
+				#header
+					height menubar
+					justify-content flex-end
+					#logo
+						height menubar		
+				#content
+					.vegas-container
+						height 100vh - menubar !important
+						padding 0 !important
+					.page
+						padding 1em
+						//- font-size 2em
+			
+			
+append body	
+	include ./menus.jade
+	#container.flex.checkered
+		#header.flex.black.noselect
+			img#logo(src=about.logo)
+		#content.blue.noselect
+	a#signin.red.z-10.fg-white.flex(href='/login')
+		if !plus.profile
+			.fa.fa-google
+		else
+			img.circle(src=plus.profile.image.url)
+		span
+			if !plus.profile
+				| Please sign in.
+			else
+				| Welcome, #{plus.profile.name.givenName}.
+
+				//- if plus.profile
+					img(src=plus.profile.image.url)
+				//- p.z-10 Welcome
+	
+prepend scripts
+	+scripts('/node_modules/mobile-detect/mobile-detect.js','/node_modules/ion-sound/js/ion.sound.js')
+append scripts
+	script!= javascript
+	+scripts('/main.js')
+	//- /jquery-matchmedia/dist/jquery.matchMedia.js')
+	+sheets('/node_modules/vegas/dist/vegas.min.css')
+	+script('/node_modules/vegas/dist/vegas.js')
+	//- script
+		//- :coffee-script(bare=true)
+	!= js('app')
+	+lr

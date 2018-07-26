@@ -1,0 +1,38 @@
+if about
+  ul#menu.noselect.hidden.z-5
+    each menu,key in about.menus
+      - var x = !!plus.profile && plus.profile.emails[0].value || null;
+      //- - filter(function(v) { return v.type === 'account'; })[0].value;
+      - console.log('checking menu ' + key + ': ' + menu.mask + ' for ' + x);
+      li.fg-white(class=(!plus.profile || !roles().inMask(x, menu.mask)) && 'disabled', data-menu=key)
+        .fa(class='fa-' + menu.icon)
+        span.desc(data-desc=menu.desc)= key
+
+script
+  :coffee-script(bare=true)
+    toggleit = (m, open) ->
+      m.removeClass 'open' if not open
+      m.children().slideToggle 500, 'easeInExpo', -> m.addClass 'open' if open
+    
+    closeMenu = (m = $('#menu')) ->
+      console.log "closing: open is #{m.hasClass 'open'}"
+      toggleit m, false if m.hasClass 'open'
+      
+    openMenu = (m = $('#menu')) ->
+      return if m.hasClass 'open'
+      m.css display: 'block'
+      toggleit m, true
+    
+    toggleMenu = -> $('#menu').hasClass 'open' and closeMenu() or openMenu()
+    
+    menuClick = (cb) ->
+      $('#menu li').on 'click', (e) ->
+        li = $(e.target.closest 'li').data 'menu'
+        console.log li
+        cb li
+      # t = $(e.target)
+    
+    # m.removeClass 'tapped' unless m.hasClass 'open'
+    # if !m.hasClass 'open' and dontopen
+    # m[ !!open and 'addClass' or 'toggleClass'] 'open'
+    # return if !forceClose and !m.hasClass 'open'
